@@ -5,7 +5,10 @@
 
 export C=/tmp/backupdir
 export S=/system
-export V=BeanStalk
+export V=12
+
+# Scripts in /system/addon.d expect to find backuptool.functions in /tmp
+cp -f /tmp/install/bin/backuptool.functions /tmp
 
 # Preserve /system/addon.d in /tmp/addon.d
 preserve_addon_d() {
@@ -22,7 +25,10 @@ restore_addon_d() {
 
 # Proceed only if /system is the expected major and minor version
 check_prereq() {
-echo "$V"
+if ( ! grep -q "^ro.candy5.version=$V.*" /system/build.prop ); then
+  echo "Not backing up files from incompatible version: $V"
+  return 0
+fi
 return 1
 }
 
