@@ -118,18 +118,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     vendor/beanstalk/prebuilt/common/etc/viper4android/viper4android.apk:system/app/Viper4Android/viper4android.apk
 
-# SuperSU
-PRODUCT_COPY_FILES += \
-    vendor/beanstalk/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
-    vendor/beanstalk/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
-
 # Copy latinime for gesture typing
 PRODUCT_COPY_FILES += \
     vendor/beanstalk/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
-
-# Kernel Adiutor App
-PRODUCT_COPY_FILES += \
-    vendor/beanstalk/prebuilt/common/app/KernelAdiutor.apk:system/priv-app/KernelAdiutor/KernelAdiutor.apk
 
 # Custom BeanStalk packages
 PRODUCT_PACKAGES += \
@@ -205,7 +196,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     procmem \
-    procrank
+    procrank \
+    su
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=1
